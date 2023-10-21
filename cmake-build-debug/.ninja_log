@@ -1,0 +1,18 @@
+# ninja log v5
+5	165	7195507429959335	CMakeFiles/Connect4.dir/src/Bitboard.cpp.obj	cecd3f5e156357f1
+2	472	7195512540731413	CMakeFiles/Connect4.dir/main.cpp.obj	3af48d5f200b707c
+637	733	7195512543311957	Connect4.exe	dfcc217bc8a74b83
+5	637	7195512542381968	CMakeFiles/Connect4.dir/src/ConnectFour.cpp.obj	ce243cf502095ee4
+0	139	7195762847191136	build.ninja	357a03d0a78f261b
+2	682	7195765512596847	CMakeFiles/Connect4.dir/src/ConnectFour.cpp.obj	ce243cf502095ee4
+682	808	7195765513827515	Connect4.exe	dfcc217bc8a74b83
+2	456	7195765901526592	CMakeFiles/Connect4.dir/main.cpp.obj	3af48d5f200b707c
+456	548	7195765902456572	Connect4.exe	dfcc217bc8a74b83
+2	455	7195766213058265	CMakeFiles/Connect4.dir/main.cpp.obj	3af48d5f200b707c
+455	539	7195766213868293	Connect4.exe	dfcc217bc8a74b83
+2	477	7195766663792534	CMakeFiles/Connect4.dir/main.cpp.obj	3af48d5f200b707c
+477	563	7195766664632448	Connect4.exe	dfcc217bc8a74b83
+8	55	7195770131958499	CMakeFiles/Connect4.dir/src/Bitboard.cpp.obj	cecd3f5e156357f1
+2	477	7195770136168962	CMakeFiles/Connect4.dir/main.cpp.obj	3af48d5f200b707c
+6	624	7195770137638931	CMakeFiles/Connect4.dir/src/ConnectFour.cpp.obj	ce243cf502095ee4
+624	712	7195770138488924	Connect4.exe	dfcc217bc8a74b83
