@@ -27,10 +27,12 @@ public:
     ConnectFour();
     int getMoveCount();
     void makeMove(int column);
+    bool gameOver();
     void undoMove();
     static bool isWin(U64 bb);
     vector<int> listMoves();
     static void displayBoard(U64 board);
+    static void displayBoard(U64 boardOne, U64 boardTwo);
     Bitboard getPlayerBoard(bool isPlayerOne);
     void startNewGame();
 };
