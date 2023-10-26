@@ -9,4 +9,6 @@ add_executable(Connect4 main.cpp
         src/ConnectFour.cpp
         src/ConnectFour.h
         src/typedefs.h
+        src/Evaluate.cpp
+        src/Evaluate.h
 )

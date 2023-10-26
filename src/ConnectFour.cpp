@@ -8,8 +8,8 @@
 
 #define get_bit(bitboard, square)(bitboard & (1ULL<< square)
 
-U64 ConnectFour::getMoveCount() {
-    return moves.size();
+int ConnectFour::getMoveCount(){
+    return moveCounter;
 }
 
 bool ConnectFour::isWin(U64 bitboard) {
@@ -19,6 +19,7 @@ bool ConnectFour::isWin(U64 bitboard) {
         bb = bitboard & (bitboard >> direction);
         if ((bb & (bb >> (2 * direction))) != 0) return true;
     }
+    cout << "Game continues" <<endl;
     return false;
 }
 
@@ -35,11 +36,15 @@ void ConnectFour::undoMove() {
 void ConnectFour::makeMove(int column) {
     long move = 1L << height[column]++;
     if(moveCounter % 2 == 0){
+        cout << "player one move" << endl;
         playerOneBitboard.setBoard(playerOneBitboard.getBoard() ^ move) ;
     }else{
+        cout << "player two move" << endl;
         playerTwoBitboard.setBoard(playerTwoBitboard.getBoard() ^ move) ;
     }
+
     moves[moveCounter]++;
+    moveCounter++;
 
 }
 
@@ -49,22 +54,65 @@ ConnectFour::ConnectFour(){
 }
 
 vector<int> ConnectFour::listMoves() {
-    vector<int> moves;
-    long TOP = 0b1000000100000010000001000000100000010000001000000L;
+    vector<int> availableMoves;
+    U64 TOP = 0b1000000100000010000001000000100000010000001000000L;
     for(int col = 0; col<=6;col++){
-        if ((TOP & (1L << height[col])) == 0) moves.push_back(col);
+        if ((TOP & (1L << height[col])) == 0) availableMoves.push_back(col);
     }
-    return moves;
+    return availableMoves;
 }
 
 void ConnectFour::displayBoard(U64 board) {
     for (int rank = 7; rank >= 0; rank--) {
-        for (int file = 0; file < 8; file++) {
-            int square = rank * 8 + file;
+        for (int file = 0; file < 7; file++) {
+            int square = rank * 7 + file;
             int exp = get_bit(board, square) ? 1 : 0);
             cout << " " << exp;
         }
         cout << endl;
+    }
+}
+
+Bitboard ConnectFour::getPlayerBoard(bool isPlayerOne) {
+    if(isPlayerOne){
+        return playerOneBitboard;
+    }else{
+        return playerTwoBitboard;
+    }
+}
+
+void ConnectFour::startNewGame() {
+    playerOneBitboard.setBoard(  0ULL);
+    playerTwoBitboard.setBoard(0ULL);
+    for(int i = 0;i<7;i++){
+        moves.push_back(0);
+    }
+    while(!isWin(playerOneBitboard.getBoard()) | !isWin(playerTwoBitboard.getBoard())){
+        int currentMoveCount = getMoveCount();
+        cout << "Moves made = " << currentMoveCount <<endl;
+        if(currentMoveCount%2==0){
+            cout << "It is Player One's turn" << endl;
+            cout << "Enter a move" << endl;
+            vector<int> currentAvailableMoves = listMoves();
+            for(int moveToMake:currentAvailableMoves){
+                cout << moveToMake << " ";
+            }
+            cout << endl;
+            string tempString;
+            getline(cin, tempString);
+            makeMove(stoi(tempString));
+        }else{
+            cout << "It is Player Two's turn" << endl;
+            cout << "Enter a move" << endl;
+            vector<int> currentAvailableMoves = listMoves();
+            for(int moveToMake:currentAvailableMoves){
+                cout << moveToMake << " ";
+            }
+            cout << endl;
+            string tempString;
+            getline(cin, tempString);
+            makeMove(stoi(tempString));
+        }
     }
 }
 

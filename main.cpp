@@ -1,12 +1,11 @@
 #include <iostream>
 #include "src/ConnectFour.h"
 
-int main() {
-    ConnectFour * game = new ConnectFour();
-    vector<int> moves = game->listMoves();
-    for(int move: moves){
-        cout << move << endl;
-    }
+ConnectFour * game;
 
+int main() {
+    game = new ConnectFour();
+    vector<int> moves = game->listMoves();
+    game->startNewGame();
     return 0;
 }

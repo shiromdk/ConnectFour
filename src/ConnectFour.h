@@ -20,18 +20,19 @@ private:
     int moveCounter;
     vector<int> height; // Serves as memory of where the next token goes given the column
     vector<int> moves;
-
     Bitboard playerOneBitboard;
     Bitboard playerTwoBitboard;
 
 public:
     ConnectFour();
-    U64 getMoveCount();
+    int getMoveCount();
     void makeMove(int column);
     void undoMove();
-    bool isWin(U64 bb);
+    static bool isWin(U64 bb);
     vector<int> listMoves();
     static void displayBoard(U64 board);
+    Bitboard getPlayerBoard(bool isPlayerOne);
+    void startNewGame();
 };
 
 
